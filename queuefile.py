@@ -1,6 +1,5 @@
 class CircularQueue():
 
-    # constructor
     def __init__(self, size):
         self.size = size
         self.queue = [None] * size
@@ -15,10 +14,12 @@ class CircularQueue():
             self.front = 0
             self.rear = 0
             self.queue[self.rear] = data
+            print('%s is added.' % data)
 
         else:
             self.rear = (self.rear + 1) % self.size
             self.queue[self.rear] = data
+            print('%s is added.' % data)
 
     def dequeue(self):
         if (self.front == -1):
@@ -28,10 +29,13 @@ class CircularQueue():
             temp = self.queue[self.front]
             self.front = -1
             self.rear = -1
+            print(temp, ' is dequeued')
             return temp
+
         else:
             temp = self.queue[self.front]
             self.front = (self.front + 1) % self.size
+            print(temp, ' is dequeued')
             return temp
 
     def display(self):
@@ -68,9 +72,12 @@ if __name__ == '__main__':
             '\n 1. Enqueue \n 2. Dequeue \n 3. display queue \n 4. Exit \n ')
 
         if choice == '1':
-            obj.enqueue(size)
+            data = input('Enter your variable you want to enqueue: ')
+            obj.enqueue(data)
+
         elif choice == '2':
             obj.dequeue()
+
         elif choice == '3':
             obj.display()
         elif choice == '4':
@@ -78,18 +85,3 @@ if __name__ == '__main__':
 
         else:
             print('Wrong choice')
-
-
-# ob = CircularQueue(5)
-# ob.enqueue(14)
-# ob.enqueue(22)
-# ob.enqueue(13)
-# ob.enqueue(-6)
-# ob.display()
-# print("Deleted value = ", ob.dequeue())
-# print("Deleted value = ", ob.dequeue())
-# ob.display()
-# ob.enqueue(9)
-# ob.enqueue(20)
-# ob.enqueue(5)
-# ob.display()
